@@ -1,8 +1,9 @@
 import { useMemo } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { LineChart } from "react-native-gifted-charts";
 
 import Card from "../../components/Card";
+import Text from "../../components/Text";
 
 const EXPENSES_DATA = [
   {
@@ -135,10 +136,10 @@ export default function Home() {
     const expenseValues = EXPENSES_DATA?.map((expense) => expense.value);
 
     const minValue = [...incomeValues, ...expenseValues].sort(
-      (a, b) => a - b,
+      (a, b) => a - b
     )?.[0];
     const maxValue = [...incomeValues, ...expenseValues].sort(
-      (a, b) => b - a,
+      (a, b) => b - a
     )?.[0];
 
     return [
@@ -151,14 +152,14 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Card>
-        <Text>Income &times; Expense Overview</Text>
+        <Text style={styles.chartTitle}>Income &times; Expense Overview</Text>
         <View style={styles.chartContainer}>
           <LineChart
             hideYAxisText
             curved
             isAnimated
             animateOnDataChange
-            hideRules
+            // hideRules
             showValuesAsDataPointsText
             focusEnabled
             // showStripOnFocus
@@ -167,7 +168,11 @@ export default function Home() {
             yAxisOffset={minOffset}
             yAxisColor="transparent"
             xAxisColor="transparent"
-            xAxisLabelTextStyle={{ color: "#ababb2", fontWeight: 500 }}
+            xAxisLabelTextStyle={{
+              color: "#ababb2",
+              fontWeight: 600,
+              fontFamily: "Dosis",
+            }}
             maxValue={maxOffset}
             textShiftY={-4}
             textShiftX={-10}
@@ -191,7 +196,12 @@ const styles = StyleSheet.create({
   },
   chartContainer: {
     overflow: "hidden",
-    marginLeft: -16, // Offset the chart's left spacing
+    marginLeft: -8, // Offset the chart's left spacing
+    marginTop: 8,
+  },
+  chartTitle: {
+    fontWeight: 600,
+    fontSize: 16,
   },
   customDatapoint: {
     width: 20,
