@@ -18,6 +18,10 @@ export default function TabsLayout() {
         headerTintColor: "#fff",
         tabBarActiveTintColor: "#6a43ed",
         tabBarInactiveTintColor: "#ababb2",
+        tabBarLabelStyle: {
+          fontFamily: "Dosis",
+          fontWeight: 800,
+        },
       }}
       sceneContainerStyle={{
         backgroundColor: "#f6f6f6",
