@@ -1,9 +1,11 @@
-import { useMemo } from "react";
-import { View, StyleSheet } from "react-native";
+import { useMemo, useContext } from "react";
+import { View, StyleSheet, FlatList, ScrollView } from "react-native";
 import { LineChart } from "react-native-gifted-charts";
 
 import Card from "../../components/Card";
 import Text from "../../components/Text";
+import { CategoryContext } from "../../contexts/CategoryProvider";
+import CategoryItem from "../../components/CategoryItem";
 
 const EXPENSES_DATA = [
   {
@@ -131,15 +133,17 @@ const INCOME_DATA = [
 ];
 
 export default function Home() {
+  const [categories] = useContext(CategoryContext);
+
   const [maxOffset, minOffset] = useMemo(() => {
     const incomeValues = INCOME_DATA?.map((income) => income.value);
     const expenseValues = EXPENSES_DATA?.map((expense) => expense.value);
 
     const minValue = [...incomeValues, ...expenseValues].sort(
-      (a, b) => a - b
+      (a, b) => a - b,
     )?.[0];
     const maxValue = [...incomeValues, ...expenseValues].sort(
-      (a, b) => b - a
+      (a, b) => b - a,
     )?.[0];
 
     return [
@@ -149,50 +153,82 @@ export default function Home() {
     ];
   }, [INCOME_DATA, EXPENSES_DATA]);
 
+  const dummyTopSpending = useMemo(() => {
+    return categories
+      ?.map((category) => ({
+        ...category,
+        amount: Math.floor(Math.random() * 40000) + 1,
+        transactions: Math.floor(Math.random() * 10) + 1,
+      }))
+      .sort((a, b) => b.amount - a.amount);
+  }, [categories]);
+
   return (
     <View style={styles.container}>
-      <Card>
-        <Text style={styles.chartTitle}>Income &times; Expense Overview</Text>
-        <View style={styles.chartContainer}>
-          <LineChart
-            hideYAxisText
-            curved
-            isAnimated
-            animateOnDataChange
-            // hideRules
-            showValuesAsDataPointsText
-            focusEnabled
-            // showStripOnFocus
-            showTextOnFocus
-            delayBeforeUnFocus={1500}
-            yAxisOffset={minOffset}
-            yAxisColor="transparent"
-            xAxisColor="transparent"
-            xAxisLabelTextStyle={{
-              color: "#ababb2",
-              fontWeight: 600,
-              fontFamily: "Dosis",
-            }}
-            maxValue={maxOffset}
-            textShiftY={-4}
-            textShiftX={-10}
-            endSpacing={-24}
-            data={EXPENSES_DATA}
-            data2={INCOME_DATA}
-            color1="#ff6581"
-            color2="#bbf1a1"
-            dataPointsColor1="#ff6581"
-            dataPointsColor2="#bbf1a1"
-          />
-        </View>
-      </Card>
+      <FlatList
+        ListHeaderComponent={
+          <>
+            <Card style={styles.chartCardContainer}>
+              <Text style={styles.chartTitle}>
+                Income &times; Expense Overview
+              </Text>
+              <View style={styles.chartContainer}>
+                <LineChart
+                  hideYAxisText
+                  curved
+                  isAnimated
+                  animateOnDataChange
+                  // hideRules
+                  showValuesAsDataPointsText
+                  focusEnabled
+                  // showStripOnFocus
+                  showTextOnFocus
+                  delayBeforeUnFocus={1500}
+                  yAxisOffset={minOffset}
+                  yAxisColor="transparent"
+                  xAxisColor="transparent"
+                  xAxisLabelTextStyle={{
+                    color: "#ababb2",
+                    fontWeight: 600,
+                    fontFamily: "Exo2-Medium",
+                  }}
+                  maxValue={maxOffset}
+                  textShiftY={-4}
+                  textShiftX={-10}
+                  endSpacing={-24}
+                  data={EXPENSES_DATA}
+                  data2={INCOME_DATA}
+                  color1="#ff6581"
+                  color2="#bbf1a1"
+                  dataPointsColor1="#ff6581"
+                  dataPointsColor2="#bbf1a1"
+                />
+              </View>
+            </Card>
+            <Text style={styles.topExpenseHeader}>Top 5 Expenses</Text>
+          </>
+        }
+        ListHeaderComponentStyle={styles.listHeaderComponentStyle}
+        ItemSeparatorComponent={() => (
+          <View style={{ width: "100%", height: 16 }} />
+        )}
+        data={dummyTopSpending}
+        renderItem={({ item }) => <CategoryItem item={item} />}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 24,
+    paddingLeft: 24,
+    paddingRight: 24,
+  },
+  chartCardContainer: {
+    marginBottom: 16,
   },
   chartContainer: {
     overflow: "hidden",
@@ -208,5 +244,13 @@ const styles = StyleSheet.create({
     height: 20,
     borderRadius: 999,
     backgroundColor: "red",
+  },
+  listHeaderComponentStyle: {
+    marginTop: 24,
+    marginBottom: 16,
+  },
+  topExpenseHeader: {
+    fontSize: 24,
+    fontWeight: 600,
   },
 });

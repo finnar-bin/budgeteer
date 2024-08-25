@@ -19,7 +19,7 @@ export default function TabsLayout() {
         tabBarActiveTintColor: "#6a43ed",
         tabBarInactiveTintColor: "#ababb2",
         tabBarLabelStyle: {
-          fontFamily: "Dosis",
+          fontFamily: "Exo2-SemiBold",
           fontWeight: 800,
         },
       }}
