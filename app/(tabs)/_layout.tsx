@@ -16,11 +16,13 @@ export default function TabsLayout() {
           />
         ),
         headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontFamily: "Exo2-Bold",
+        },
         tabBarActiveTintColor: "#6a43ed",
         tabBarInactiveTintColor: "#ababb2",
         tabBarLabelStyle: {
           fontFamily: "Exo2-SemiBold",
-          fontWeight: 800,
         },
       }}
       sceneContainerStyle={{
