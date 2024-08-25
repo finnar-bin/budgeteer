@@ -1,9 +1,9 @@
 import { View, StyleSheet } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome6";
 
-import Text from "./Text";
-import { CategoryItemTransaction } from "../types";
-import { toPhp } from "../utils";
+import Text from "@/components/Text";
+import { CategoryItemTransaction } from "@/types";
+import { toPhp } from "@/utils";
 
 type CategoryItemProps = {
   item: CategoryItemTransaction;

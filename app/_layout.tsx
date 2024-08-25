@@ -3,7 +3,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
 
-import { CategoryProvider } from "../contexts/CategoryProvider";
+import { CategoryProvider } from "@/contexts/CategoryProvider";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.

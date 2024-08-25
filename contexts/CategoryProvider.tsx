@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { Category } from "../types";
+import { Category } from "@/types";
 import uuid from "react-native-uuid";
 
 const CATEGORIES: Category[] = [

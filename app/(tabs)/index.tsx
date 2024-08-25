@@ -2,10 +2,10 @@ import { useMemo, useContext } from "react";
 import { View, StyleSheet, FlatList, ScrollView } from "react-native";
 import { LineChart } from "react-native-gifted-charts";
 
-import Card from "../../components/Card";
-import Text from "../../components/Text";
-import { CategoryContext } from "../../contexts/CategoryProvider";
-import CategoryItem from "../../components/CategoryItem";
+import Card from "@/components/Card";
+import Text from "@/components/Text";
+import { CategoryContext } from "@/contexts/CategoryProvider";
+import CategoryItem from "@/components/CategoryItem";
 
 const EXPENSES_DATA = [
   {
