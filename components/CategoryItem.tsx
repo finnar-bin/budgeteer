@@ -3,6 +3,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome6";
 
 import Text from "./Text";
 import { CategoryItemTransaction } from "../types";
+import { toPhp } from "../utils";
 
 type CategoryItemProps = {
   item: CategoryItemTransaction;
@@ -21,12 +22,7 @@ export default function CategoryItem({ item }: CategoryItemProps) {
           </Text>
         </View>
       </View>
-      <Text>
-        {new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "PHP",
-        }).format(item.amount)}
-      </Text>
+      <Text>{toPhp(item?.amount)}</Text>
     </View>
   );
 }
