@@ -6,6 +6,7 @@ import Card from "@/components/Card";
 import Text from "@/components/Text";
 import { CategoryContext } from "@/contexts/CategoryProvider";
 import CategoryItem from "@/components/CategoryItem";
+import { Palette } from "@/theme";
 
 const EXPENSES_DATA = [
   {
@@ -188,7 +189,7 @@ export default function Home() {
                   yAxisColor="transparent"
                   xAxisColor="transparent"
                   xAxisLabelTextStyle={{
-                    color: "#ababb2",
+                    color: Palette.text.secondary,
                     fontWeight: 600,
                     fontFamily: "Exo2-Medium",
                   }}

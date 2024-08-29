@@ -4,6 +4,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome6";
 import Text from "@/components/Text";
 import { CategoryItemTransaction } from "@/types";
 import { toPhp } from "@/utils";
+import { Palette } from "@/theme";
 
 type CategoryItemProps = {
   item: CategoryItemTransaction;
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     fontWeight: 700,
   },
   transactions: {
-    color: "#ababb2",
+    color: Palette.text.secondary,
     fontWeight: "thin",
   },
 });

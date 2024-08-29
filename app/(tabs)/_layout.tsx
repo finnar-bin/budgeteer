@@ -2,6 +2,7 @@ import { Text, View } from "react-native";
 import { Tabs } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome6";
 import { LinearGradient } from "expo-linear-gradient";
+import { Palette } from "@/theme";
 
 export default function TabsLayout() {
   return (
@@ -19,14 +20,14 @@ export default function TabsLayout() {
         headerTitleStyle: {
           fontFamily: "Exo2-Bold",
         },
-        tabBarActiveTintColor: "#6a43ed",
-        tabBarInactiveTintColor: "#ababb2",
+        tabBarActiveTintColor: Palette.common.purple,
+        tabBarInactiveTintColor: Palette.text.secondary,
         tabBarLabelStyle: {
           fontFamily: "Exo2-SemiBold",
         },
       }}
       sceneContainerStyle={{
-        backgroundColor: "#f6f6f6",
+        backgroundColor: Palette.background.main,
       }}
     >
       <Tabs.Screen

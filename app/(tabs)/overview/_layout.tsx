@@ -1,3 +1,4 @@
+import { Palette } from "@/theme";
 import { Stack } from "expo-router";
 
 export default function OverviewLayout() {
@@ -6,7 +7,7 @@ export default function OverviewLayout() {
       screenOptions={{
         headerShown: false,
         contentStyle: {
-          backgroundColor: "#f6f6f6",
+          backgroundColor: Palette.background.main,
         },
       }}
     >
