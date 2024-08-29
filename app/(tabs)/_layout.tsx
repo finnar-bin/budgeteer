@@ -1,8 +1,10 @@
-import { Text, View } from "react-native";
+import { Text, View, Button, Pressable } from "react-native";
 import { Tabs } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome6";
 import { LinearGradient } from "expo-linear-gradient";
+
 import { Palette } from "@/theme";
+import IconButton from "@/components/IconButton";
 
 export default function TabsLayout() {
   return (
@@ -46,6 +48,7 @@ export default function TabsLayout() {
           tabBarIcon: ({ color }) => (
             <FontAwesome name="chart-gantt" color={color} size={24} />
           ),
+          headerShown: false,
         }}
       />
       <Tabs.Screen
