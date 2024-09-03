@@ -1,9 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { Stack } from "expo-router";
-import FontAwesome from "@expo/vector-icons/FontAwesome6";
 
 import { Palette } from "@/theme";
-import IconButton from "@/components/IconButton";
 
 export default function OverviewLayout() {
   return (
@@ -30,15 +28,6 @@ export default function OverviewLayout() {
         name="index"
         options={{
           title: "Overview",
-          headerRight: () => (
-            <IconButton style={{ marginRight: -8 }}>
-              <FontAwesome
-                name="calendar"
-                color={Palette.common.white}
-                size={24}
-              />
-            </IconButton>
-          ),
         }}
       />
       <Stack.Screen
