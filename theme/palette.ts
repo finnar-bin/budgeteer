@@ -11,5 +11,6 @@ export const Palette = {
     white: "#fff",
     purple: "#6a43ed",
     grey: "#d3d3d3",
+    blue: "#456efe",
   },
 };
